@@ -1,8 +1,9 @@
-package com.manishjandu.foodify
+package com.manishjandu.foodify.ui.fragments.recipes
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import com.manishjandu.foodify.R
 import com.manishjandu.foodify.databinding.FragmentRecipesBinding
 
 class RecipesFragment : Fragment(R.layout.fragment_recipes) {
