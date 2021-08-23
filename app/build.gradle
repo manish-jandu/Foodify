@@ -2,8 +2,10 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'kotlin-parcelize'
     id 'androidx.navigation.safeargs.kotlin'
     id 'dagger.hilt.android.plugin'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
@@ -89,7 +91,8 @@ dependencies {
     implementation "io.coil-kt:coil:0.13.0"
 
     // Gson
-    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.google.code.gson:gson:2.8.7'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
     // Shimmer
     implementation 'com.facebook.shimmer:shimmer:0.5.0'

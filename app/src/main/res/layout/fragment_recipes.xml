@@ -13,6 +13,8 @@
         android:layout_height="0dp"
         android:layout_marginHorizontal="8dp"
         android:orientation="vertical"
+        app:shimmer_recycler_item_count="3"
+        app:shimmer_recycler_layout="@layout/placeholder_row_layout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
