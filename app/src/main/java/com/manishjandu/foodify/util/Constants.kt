@@ -1,4 +1,6 @@
-package com.manishjandu.foodify
+package com.manishjandu.foodify.util
+
+import com.manishjandu.foodify.BuildConfig
 
 class Constants {
     companion object{
