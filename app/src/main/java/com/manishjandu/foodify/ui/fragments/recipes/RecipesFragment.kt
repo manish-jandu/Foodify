@@ -13,6 +13,7 @@ import com.manishjandu.foodify.adapters.RecipesAdapter
 import com.manishjandu.foodify.databinding.FragmentRecipesBinding
 import com.manishjandu.foodify.util.NetworkResult
 import com.manishjandu.foodify.util.NetworkResult.Success
+import com.manishjandu.foodify.util.observeOnce
 import com.manishjandu.foodify.viewmodels.MainViewModel
 import com.manishjandu.foodify.viewmodels.RecipesViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -44,7 +45,7 @@ class RecipesFragment : Fragment(R.layout.fragment_recipes) {
 
     private fun readDatabase() {
         lifecycleScope.launchWhenStarted {
-            mainViewModel.readRecipes.observe(viewLifecycleOwner) { database ->
+            mainViewModel.readRecipes.observeOnce(viewLifecycleOwner) { database ->
                 if (database.isNotEmpty()) {
                     Log.d("RecipesFragment", "readDatabase called!")
                     recipesAdapter.submitList(database[0].foodRecipe.results)
