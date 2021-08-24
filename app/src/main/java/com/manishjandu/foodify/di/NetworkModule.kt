@@ -18,7 +18,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun providesOkHttpClient():OkHttpClient{
+    fun providesOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .readTimeout(15,TimeUnit.SECONDS)
             .connectTimeout(15,TimeUnit.SECONDS)
@@ -27,7 +27,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun providesConvertorFactory():GsonConverterFactory{
+    fun providesConvertorFactory(): GsonConverterFactory {
         return GsonConverterFactory.create()
     }
 
@@ -36,7 +36,7 @@ object NetworkModule {
     fun providesRetrofitInstance(
         okHttpClient: OkHttpClient,
         gsonConverterFactory: GsonConverterFactory
-    ):Retrofit{
+    ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(okHttpClient)
