@@ -3,7 +3,7 @@ package com.manishjandu.foodify.util
 import com.manishjandu.foodify.BuildConfig
 
 class Constants {
-    companion object{
+    companion object {
         const val API_KEY = BuildConfig.API_KEY
         const val BASE_URL = "https://api.spoonacular.com"
 
@@ -14,5 +14,9 @@ class Constants {
         const val QUERY_DIET = "diet"
         const val QUERY_ADD_RECIPE_INFORMATION = "addRecipeInformation"
         const val QUERY_FILL_INGREDIENTS = "fillIngredients"
+
+        //Room Database
+        const val DATABASE_NAME = "recipes_database"
+        const val TABLE_NAME = "recipes_table"
     }
 }
