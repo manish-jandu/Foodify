@@ -1,10 +1,12 @@
 package com.manishjandu.foodify.ui.fragments.recipes
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.manishjandu.foodify.R
 import com.manishjandu.foodify.adapters.RecipesAdapter
@@ -29,10 +31,33 @@ class RecipesFragment : Fragment(R.layout.fragment_recipes) {
         _binding = FragmentRecipesBinding.bind(view)
 
         showRecyclerView()
-        requestApiData()
+        readDatabase()
+    }
+
+    private fun showRecyclerView() {
+        binding.recyclerView.apply {
+            adapter = recipesAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
+        showShimmerEffect()
+    }
+
+    private fun readDatabase() {
+        lifecycleScope.launchWhenStarted {
+            mainViewModel.readRecipes.observe(viewLifecycleOwner) { database ->
+                if (database.isNotEmpty()) {
+                    Log.d("RecipesFragment", "readDatabase called!")
+                    recipesAdapter.submitList(database[0].foodRecipe.results)
+                    hideShimmerEffect()
+                } else {
+                    requestApiData()
+                }
+            }
+        }
     }
 
     private fun requestApiData() {
+        Log.d("RecipesFragment", "requestApiData called!")
         mainViewModel.getRecipes(recipeViewModel.applyQueries())
         mainViewModel.recipesResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
@@ -44,6 +69,7 @@ class RecipesFragment : Fragment(R.layout.fragment_recipes) {
                 }
                 is Error -> {
                     hideShimmerEffect()
+                    loadDataFromCache()
                     Toast.makeText(requireContext(), response.message.toString(), Toast.LENGTH_LONG)
                         .show()
                 }
@@ -54,14 +80,14 @@ class RecipesFragment : Fragment(R.layout.fragment_recipes) {
         }
     }
 
-
-
-    private fun showRecyclerView() {
-        binding.recyclerView.apply {
-            adapter = recipesAdapter
-            layoutManager = LinearLayoutManager(requireContext())
+    private fun loadDataFromCache() {
+        lifecycleScope.launchWhenStarted {
+            mainViewModel.readRecipes.observe(viewLifecycleOwner) { database ->
+                if (database.isNotEmpty()) {
+                    recipesAdapter.submitList(database[0].foodRecipe.results)
+                }
+            }
         }
-        showShimmerEffect()
     }
 
     private fun showShimmerEffect() {
