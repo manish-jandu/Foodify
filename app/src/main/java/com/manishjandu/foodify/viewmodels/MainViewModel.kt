@@ -1,4 +1,4 @@
-package com.manishjandu.foodify
+package com.manishjandu.foodify.viewmodels
 
 import android.app.Application
 import android.content.Context
