@@ -16,8 +16,8 @@ class RecipesViewModel(application: Application) : AndroidViewModel(application)
         val queries = HashMap<String, String>()
         queries[QUERY_API_KEY] = Constants.API_KEY
         queries[QUERY_NUMBER] = "50"
-        queries[QUERY_TYPE] = "snack"
-        queries[QUERY_DIET] = "vegan"
+        queries[QUERY_TYPE] = "main course"
+        queries[QUERY_DIET] = "gluten free"
         queries[QUERY_ADD_RECIPE_INFORMATION] = "true"
         queries[QUERY_FILL_INGREDIENTS] = "true"
         return queries

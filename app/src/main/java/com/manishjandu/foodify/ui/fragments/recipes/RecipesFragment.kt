@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.manishjandu.foodify.R
 import com.manishjandu.foodify.adapters.RecipesAdapter
@@ -32,6 +33,10 @@ class RecipesFragment : Fragment(R.layout.fragment_recipes) {
 
         binding.lifecycleOwner = this
         binding.mainViewModel = mainViewModel
+
+        binding.floatingActionButtonRecipes.setOnClickListener {
+            findNavController().navigate(R.id.action_recipesFragment_to_recipesBottomSheet)
+        }
 
         showRecyclerView()
         readDatabase()

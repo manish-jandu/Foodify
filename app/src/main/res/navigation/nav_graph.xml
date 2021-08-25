@@ -9,7 +9,11 @@
         android:id="@+id/recipesFragment"
         android:name="com.manishjandu.foodify.ui.fragments.recipes.RecipesFragment"
         android:label="Recipes"
-        tools:layout="@layout/fragment_recipes" />
+        tools:layout="@layout/fragment_recipes" >
+        <action
+            android:id="@+id/action_recipesFragment_to_recipesBottomSheet"
+            app:destination="@id/recipesBottomSheet" />
+    </fragment>
     <fragment
         android:id="@+id/favouriteRecipesFragment"
         android:name="com.manishjandu.foodify.ui.fragments.favourites.FavouriteRecipesFragment"
@@ -20,4 +24,13 @@
         android:name="com.manishjandu.foodify.ui.fragments.foodjoke.FoodJokeFragment"
         android:label="Food Joke"
         tools:layout="@layout/fragment_food_joke" />
+    <dialog
+        android:id="@+id/recipesBottomSheet"
+        android:name="com.manishjandu.foodify.ui.fragments.recipes.bottomsheet.RecipesBottomSheet"
+        android:label="Recipes"
+        tools:layout="@layout/bottom_sheet_recipes" >
+        <action
+            android:id="@+id/action_recipesBottomSheet_to_recipesFragment"
+            app:destination="@id/recipesFragment" />
+    </dialog>
 </navigation>
