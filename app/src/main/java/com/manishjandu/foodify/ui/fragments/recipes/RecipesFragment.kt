@@ -11,8 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.manishjandu.foodify.R
 import com.manishjandu.foodify.adapters.RecipesAdapter
 import com.manishjandu.foodify.databinding.FragmentRecipesBinding
-import com.manishjandu.foodify.util.NetworkResult
-import com.manishjandu.foodify.util.NetworkResult.Success
+import com.manishjandu.foodify.util.NetworkResult.*
 import com.manishjandu.foodify.util.observeOnce
 import com.manishjandu.foodify.viewmodels.MainViewModel
 import com.manishjandu.foodify.viewmodels.RecipesViewModel
@@ -30,6 +29,9 @@ class RecipesFragment : Fragment(R.layout.fragment_recipes) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentRecipesBinding.bind(view)
+
+        binding.lifecycleOwner = this
+        binding.mainViewModel = mainViewModel
 
         showRecyclerView()
         readDatabase()
@@ -74,7 +76,7 @@ class RecipesFragment : Fragment(R.layout.fragment_recipes) {
                     Toast.makeText(requireContext(), response.message.toString(), Toast.LENGTH_LONG)
                         .show()
                 }
-                is NetworkResult.Loading -> {
+                is Loading -> {
                     showShimmerEffect()
                 }
             }
