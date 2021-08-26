@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.manishjandu.foodify.R
 import com.manishjandu.foodify.adapters.RecipesAdapter
@@ -26,6 +27,8 @@ class RecipesFragment : Fragment(R.layout.fragment_recipes) {
     private val mainViewModel: MainViewModel by viewModels()
     private val recipeViewModel: RecipesViewModel by viewModels()
     private val recipesAdapter by lazy { RecipesAdapter() }
+
+    private val args by navArgs<RecipesFragmentArgs>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -53,7 +56,7 @@ class RecipesFragment : Fragment(R.layout.fragment_recipes) {
     private fun readDatabase() {
         lifecycleScope.launchWhenStarted {
             mainViewModel.readRecipes.observeOnce(viewLifecycleOwner) { database ->
-                if (database.isNotEmpty()) {
+                if (database.isNotEmpty() && !args.backFromBottomSheet) {
                     Log.d("RecipesFragment", "readDatabase called!")
                     recipesAdapter.submitList(database[0].foodRecipe.results)
                     hideShimmerEffect()
