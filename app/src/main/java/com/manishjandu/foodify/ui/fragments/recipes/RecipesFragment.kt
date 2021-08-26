@@ -13,11 +13,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.manishjandu.foodify.R
 import com.manishjandu.foodify.adapters.RecipesAdapter
 import com.manishjandu.foodify.databinding.FragmentRecipesBinding
+import com.manishjandu.foodify.util.NetworkListener
 import com.manishjandu.foodify.util.NetworkResult.*
 import com.manishjandu.foodify.util.observeOnce
 import com.manishjandu.foodify.viewmodels.MainViewModel
 import com.manishjandu.foodify.viewmodels.RecipesViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+
+private const val TAG = "RecipesFragment"
 
 @AndroidEntryPoint
 class RecipesFragment : Fragment(R.layout.fragment_recipes) {
@@ -29,6 +33,7 @@ class RecipesFragment : Fragment(R.layout.fragment_recipes) {
     private val recipesAdapter by lazy { RecipesAdapter() }
 
     private val args by navArgs<RecipesFragmentArgs>()
+    private lateinit var networkListener: NetworkListener
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -37,12 +42,29 @@ class RecipesFragment : Fragment(R.layout.fragment_recipes) {
         binding.lifecycleOwner = this
         binding.mainViewModel = mainViewModel
 
-        binding.floatingActionButtonRecipes.setOnClickListener {
-            findNavController().navigate(R.id.action_recipesFragment_to_recipesBottomSheet)
+        showRecyclerView()
+
+        recipeViewModel.readBackOnline.observe(viewLifecycleOwner){backOnline->
+            recipeViewModel.backOnline = backOnline
         }
 
-        showRecyclerView()
-        readDatabase()
+        lifecycleScope.launchWhenStarted {
+            networkListener = NetworkListener()
+            networkListener.checkNetworkAvailability(requireContext()).collect { status ->
+                Log.d(TAG, "status of network is : $status")
+                recipeViewModel.networkStatus = status
+                recipeViewModel.showNetworkStatus()
+                readDatabase()
+            }
+        }
+
+        binding.floatingActionButtonRecipes.setOnClickListener {
+            if (recipeViewModel.networkStatus) {
+                findNavController().navigate(R.id.action_recipesFragment_to_recipesBottomSheet)
+            } else {
+                recipeViewModel.showNetworkStatus()
+            }
+        }
     }
 
     private fun showRecyclerView() {
