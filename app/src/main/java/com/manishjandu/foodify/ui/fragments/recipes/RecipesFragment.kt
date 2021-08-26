@@ -2,8 +2,11 @@ package com.manishjandu.foodify.ui.fragments.recipes
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -24,7 +27,7 @@ import kotlinx.coroutines.flow.collect
 private const val TAG = "RecipesFragment"
 
 @AndroidEntryPoint
-class RecipesFragment : Fragment(R.layout.fragment_recipes) {
+class RecipesFragment : Fragment(R.layout.fragment_recipes), SearchView.OnQueryTextListener {
     private var _binding: FragmentRecipesBinding? = null
     private val binding get() = _binding!!
 
@@ -44,7 +47,9 @@ class RecipesFragment : Fragment(R.layout.fragment_recipes) {
 
         showRecyclerView()
 
-        recipeViewModel.readBackOnline.observe(viewLifecycleOwner){backOnline->
+        setHasOptionsMenu(true)
+
+        recipeViewModel.readBackOnline.observe(viewLifecycleOwner) { backOnline ->
             recipeViewModel.backOnline = backOnline
         }
 
@@ -73,6 +78,28 @@ class RecipesFragment : Fragment(R.layout.fragment_recipes) {
             layoutManager = LinearLayoutManager(requireContext())
         }
         showShimmerEffect()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.recipes_menu, menu)
+
+        val search = menu.findItem(R.id.menu_search)
+        val searchView = search.actionView as? SearchView
+
+        searchView?.isSubmitButtonEnabled = true
+        searchView?.setOnQueryTextListener(this)
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        if (query!=null) {
+            searchApiData(query)
+        }
+        return true
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        return true
     }
 
     private fun readDatabase() {
@@ -110,6 +137,31 @@ class RecipesFragment : Fragment(R.layout.fragment_recipes) {
                     showShimmerEffect()
                 }
             }
+        }
+    }
+
+    private fun searchApiData(searchQuery: String) {
+        showShimmerEffect()
+        mainViewModel.searchRecipes(recipeViewModel.applySearchQuery(searchQuery))
+        mainViewModel.searchRecipesResponse.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is Success -> {
+                    hideShimmerEffect()
+                    response.data?.let {
+                        recipesAdapter.submitList(it.results)
+                    }
+                }
+                is Error -> {
+                    hideShimmerEffect()
+                    loadDataFromCache()
+                    Toast.makeText(requireContext(), response.message.toString(), Toast.LENGTH_LONG)
+                        .show()
+                }
+                is Loading -> {
+                    showShimmerEffect()
+                }
+            }
+
         }
     }
 

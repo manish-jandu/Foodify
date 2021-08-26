@@ -15,6 +15,7 @@ import com.manishjandu.foodify.util.Constants.Companion.QUERY_API_KEY
 import com.manishjandu.foodify.util.Constants.Companion.QUERY_DIET
 import com.manishjandu.foodify.util.Constants.Companion.QUERY_FILL_INGREDIENTS
 import com.manishjandu.foodify.util.Constants.Companion.QUERY_NUMBER
+import com.manishjandu.foodify.util.Constants.Companion.QUERY_SEARCH
 import com.manishjandu.foodify.util.Constants.Companion.QUERY_TYPE
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -51,7 +52,6 @@ class RecipesViewModel @Inject constructor(
     }
 
     fun applyQueries(): HashMap<String, String> {
-
         viewModelScope.launch {
             readMealAndDietType.collect { value ->
                 mealType = value.selectedMealType
@@ -64,6 +64,16 @@ class RecipesViewModel @Inject constructor(
         queries[QUERY_NUMBER] = DEFAULT_RECIPES_NUMBER
         queries[QUERY_TYPE] = mealType
         queries[QUERY_DIET] = dietType
+        queries[QUERY_ADD_RECIPE_INFORMATION] = "true"
+        queries[QUERY_FILL_INGREDIENTS] = "true"
+        return queries
+    }
+
+    fun applySearchQuery(searchQuery:String): HashMap<String, String> {
+        val queries = HashMap<String, String>()
+        queries[QUERY_SEARCH] = searchQuery
+        queries[QUERY_NUMBER] = DEFAULT_RECIPES_NUMBER
+        queries[QUERY_API_KEY] = Constants.API_KEY
         queries[QUERY_ADD_RECIPE_INFORMATION] = "true"
         queries[QUERY_FILL_INGREDIENTS] = "true"
         return queries

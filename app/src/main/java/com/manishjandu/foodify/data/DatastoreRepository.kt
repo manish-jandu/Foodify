@@ -13,14 +13,14 @@ import com.manishjandu.foodify.util.Constants.Companion.PREFERENCES_MEAL_TYPE
 import com.manishjandu.foodify.util.Constants.Companion.PREFERENCES_MEAL_TYPE_ID
 import com.manishjandu.foodify.util.Constants.Companion.PREFERENCES_NAME
 import dagger.hilt.android.qualifiers.ApplicationContext
-import dagger.hilt.android.scopes.ActivityRetainedScoped
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import okio.IOException
 import javax.inject.Inject
+import javax.inject.Singleton
 
-@ActivityRetainedScoped
+@Singleton
 class DatastoreRepository @Inject constructor(@ApplicationContext val context: Context) {
 
     private object PreferencesKeys {
