@@ -3,13 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Projects/Android-Projects/Foodify/app/src/main/res/drawable/gradient_overlay.xml" value="0.17222222222222222" />
         <entry key="..\:/Projects/Android-Projects/Foodify/app/src/main/res/drawable/ic_error_placeholder.xml" value="0.19114583333333332" />
         <entry key="..\:/Projects/Android-Projects/Foodify/app/src/main/res/layout/activity_details.xml" value="0.17083333333333334" />
         <entry key="..\:/Projects/Android-Projects/Foodify/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Projects/Android-Projects/Foodify/app/src/main/res/layout/bottom_sheet_recipes.xml" value="0.22" />
         <entry key="..\:/Projects/Android-Projects/Foodify/app/src/main/res/layout/fragment_favourite_recipes.xml" value="0.17083333333333334" />
         <entry key="..\:/Projects/Android-Projects/Foodify/app/src/main/res/layout/fragment_food_joke.xml" value="0.13958333333333334" />
+        <entry key="..\:/Projects/Android-Projects/Foodify/app/src/main/res/layout/fragment_ingredients.xml" value="0.17083333333333334" />
+        <entry key="..\:/Projects/Android-Projects/Foodify/app/src/main/res/layout/fragment_overview.xml" value="0.33" />
         <entry key="..\:/Projects/Android-Projects/Foodify/app/src/main/res/layout/fragment_recipes.xml" value="0.33" />
+        <entry key="..\:/Projects/Android-Projects/Foodify/app/src/main/res/layout/fragments_instructions.xml" value="0.17083333333333334" />
         <entry key="..\:/Projects/Android-Projects/Foodify/app/src/main/res/layout/placeholder_row_layout.xml" value="0.67" />
         <entry key="..\:/Projects/Android-Projects/Foodify/app/src/main/res/layout/recipe_row_layout.xml" value="0.6056860321384425" />
         <entry key="..\:/Projects/Android-Projects/Foodify/app/src/main/res/menu-v26/recipes_menu.xml" value="0.17083333333333334" />
