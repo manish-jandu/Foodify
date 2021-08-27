@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_recipesFragment_to_recipesBottomSheet"
             app:destination="@id/recipesBottomSheet" />
+        <action
+            android:id="@+id/action_recipesFragment_to_detailsActivity"
+            app:destination="@id/detailsActivity" />
     </fragment>
     <fragment
         android:id="@+id/favouriteRecipesFragment"
@@ -37,4 +40,13 @@
             android:id="@+id/action_recipesBottomSheet_to_recipesFragment"
             app:destination="@id/recipesFragment" />
     </dialog>
+    <activity
+        android:id="@+id/detailsActivity"
+        android:name="com.manishjandu.foodify.DetailsActivity"
+        android:label="Details"
+        tools:layout="@layout/activity_details">
+        <argument
+            android:name="result"
+            app:argType="com.manishjandu.foodify.models.Result" />
+    </activity>
 </navigation>

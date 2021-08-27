@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="result"
             type="com.manishjandu.foodify.models.Result" />
@@ -13,6 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/recipe_row_layout"
         android:layout_width="match_parent"
+        onRecipeClickListener="@{result}"
         android:layout_height="wrap_content"
         android:layout_marginVertical="4dp">
 
