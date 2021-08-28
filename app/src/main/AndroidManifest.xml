@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Foodify">
         <activity
-            android:name=".DetailsActivity"
+            android:name=".ui.DetailsActivity"
             android:theme="@style/DetailsActivity"
             android:label="Details"
             android:exported="true" />

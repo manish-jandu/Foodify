@@ -1,4 +1,4 @@
-package com.manishjandu.foodify
+package com.manishjandu.foodify.ui
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -7,11 +7,13 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
+import com.manishjandu.foodify.R
 import com.manishjandu.foodify.adapters.PagerAdapter
 import com.manishjandu.foodify.databinding.ActivityDetailsBinding
 import com.manishjandu.foodify.ui.fragments.ingredients.IngredientsFragment
 import com.manishjandu.foodify.ui.fragments.instructions.InstructionsFragment
 import com.manishjandu.foodify.ui.fragments.overview.OverviewFragment
+import com.manishjandu.foodify.util.Constants.Companion.RECIPE_RESULT_KEY
 
 class DetailsActivity : AppCompatActivity() {
     private var _binding: ActivityDetailsBinding? = null
@@ -42,7 +44,7 @@ class DetailsActivity : AppCompatActivity() {
 
 
         val resultsBundle = Bundle()
-        resultsBundle.putParcelable("recipeBundle", args.result)
+        resultsBundle.putParcelable(RECIPE_RESULT_KEY, args.result)
 
         return PagerAdapter(
             resultsBundle,

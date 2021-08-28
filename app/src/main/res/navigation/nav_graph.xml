@@ -42,7 +42,7 @@
     </dialog>
     <activity
         android:id="@+id/detailsActivity"
-        android:name="com.manishjandu.foodify.DetailsActivity"
+        android:name="com.manishjandu.foodify.ui.DetailsActivity"
         android:label="Details"
         tools:layout="@layout/activity_details">
         <argument

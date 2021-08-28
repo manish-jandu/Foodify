@@ -8,6 +8,7 @@ import coil.load
 import com.manishjandu.foodify.R
 import com.manishjandu.foodify.databinding.FragmentOverviewBinding
 import com.manishjandu.foodify.models.Result
+import com.manishjandu.foodify.util.Constants.Companion.RECIPE_RESULT_KEY
 import org.jsoup.Jsoup
 
 class OverviewFragment: Fragment(R.layout.fragment_overview) {
@@ -21,7 +22,7 @@ class OverviewFragment: Fragment(R.layout.fragment_overview) {
         _binding = FragmentOverviewBinding.bind(view)
 
         val args = arguments
-        val resultBundle : Result? = args?.getParcelable("recipeBundle")
+        val resultBundle : Result? = args?.getParcelable(RECIPE_RESULT_KEY)
 
         binding.apply {
             imageViewRecipeDetail.load(resultBundle?.image)
