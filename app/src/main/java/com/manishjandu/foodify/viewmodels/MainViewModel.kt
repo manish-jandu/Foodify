@@ -6,7 +6,8 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import androidx.lifecycle.*
 import com.manishjandu.foodify.data.Repository
-import com.manishjandu.foodify.data.database.RecipesEntity
+import com.manishjandu.foodify.data.database.entities.FavouriteEntity
+import com.manishjandu.foodify.data.database.entities.RecipesEntity
 import com.manishjandu.foodify.models.FoodRecipe
 import com.manishjandu.foodify.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -28,6 +29,23 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             repository.local.insertRecipes(recipesEntity)
         }
+
+    val readFavouriteRecipes: LiveData<List<FavouriteEntity>> =
+        repository.local.readFavouriteRecipes().asLiveData()
+
+    private fun insertFavouriteRecipe(favouriteEntity: FavouriteEntity) =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.local.insertFavouriteRecipe(favouriteEntity)
+        }
+
+    fun deleteFavouriteRecipe(favouriteEntity: FavouriteEntity) =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.local.deleteFavouriteRecipe(favouriteEntity)
+        }
+
+    fun deleteAllFavouriteRecipes() = viewModelScope.launch(Dispatchers.IO) {
+        repository.local.deleteAllFavouriteRecipes()
+    }
 
     //** RETROFIT */
     private var _recipesResponse = MutableLiveData<NetworkResult<FoodRecipe>>()
@@ -63,8 +81,8 @@ class MainViewModel @Inject constructor(
         }
     }
 
-   private suspend fun getSearchRecipeSafeCall(searchQuery: Map<String, String>) {
-       _searchRecipesResponse.value = NetworkResult.Loading()
+    private suspend fun getSearchRecipeSafeCall(searchQuery: Map<String, String>) {
+        _searchRecipesResponse.value = NetworkResult.Loading()
         if (hasInternetConnection()) {
             try {
                 val result = repository.remote.searchRecipes(searchQuery)

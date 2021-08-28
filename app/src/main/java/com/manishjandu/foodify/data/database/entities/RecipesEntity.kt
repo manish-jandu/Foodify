@@ -1,4 +1,4 @@
-package com.manishjandu.foodify.data.database
+package com.manishjandu.foodify.data.database.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

@@ -5,7 +5,7 @@ import android.view.View.VISIBLE
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import com.manishjandu.foodify.data.database.RecipesEntity
+import com.manishjandu.foodify.data.database.entities.RecipesEntity
 import com.manishjandu.foodify.models.FoodRecipe
 import com.manishjandu.foodify.util.NetworkResult
 
