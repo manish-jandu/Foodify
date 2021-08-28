@@ -155,7 +155,7 @@
         app:layout_constraintVertical_bias="0.5" />
 
     <ImageView
-        android:id="@+id/dairyFree_imageView"
+        android:id="@+id/image_view_dairy_free"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -165,15 +165,15 @@
         app:tint="@color/darkGray" />
 
     <TextView
-        android:id="@+id/dairy_textView"
+        android:id="@+id/text_view_dairy_free"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="@string/dairy_free"
         android:textColor="@color/darkGray"
-        app:layout_constraintBottom_toBottomOf="@+id/dairyFree_imageView"
-        app:layout_constraintStart_toEndOf="@+id/dairyFree_imageView"
-        app:layout_constraintTop_toTopOf="@+id/dairyFree_imageView" />
+        app:layout_constraintBottom_toBottomOf="@+id/image_view_dairy_free"
+        app:layout_constraintStart_toEndOf="@+id/image_view_dairy_free"
+        app:layout_constraintTop_toTopOf="@+id/image_view_dairy_free" />
 
     <ImageView
         android:id="@+id/image_view_healthy"
@@ -235,7 +235,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/summary_textView"
+                android:id="@+id/text_view_summary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
