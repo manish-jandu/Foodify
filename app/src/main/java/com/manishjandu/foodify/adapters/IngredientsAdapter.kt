@@ -7,13 +7,13 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.manishjandu.foodify.R
-import com.manishjandu.foodify.databinding.IngredientsRowLayoutBinding
+import com.manishjandu.foodify.databinding.RowLayoutIngredientsBinding
 import com.manishjandu.foodify.models.ExtendedIngredient
 import com.manishjandu.foodify.util.Constants.Companion.BASE_IMAGE_URL
 
 class IngredientsAdapter :
     ListAdapter<ExtendedIngredient, IngredientsAdapter.IngredientsViewHolder>(DiffUtilCallback()) {
-    class IngredientsViewHolder(binding: IngredientsRowLayoutBinding) :
+    class IngredientsViewHolder(binding: RowLayoutIngredientsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         private val ingredientImage = binding.imageViewIngredients
         private val ingredientName = binding.textViewIngredientName
@@ -39,7 +39,7 @@ class IngredientsAdapter :
         companion object {
             fun from(parent: ViewGroup): IngredientsViewHolder {
                 val inflater = LayoutInflater.from(parent.context)
-                val binding = IngredientsRowLayoutBinding.inflate(inflater, parent, false)
+                val binding = RowLayoutIngredientsBinding.inflate(inflater, parent, false)
                 return IngredientsViewHolder(binding)
             }
         }

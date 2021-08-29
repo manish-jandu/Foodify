@@ -5,12 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.manishjandu.foodify.databinding.RecipeRowLayoutBinding
+import com.manishjandu.foodify.databinding.RowLayoutRecipeBinding
 import com.manishjandu.foodify.models.Result
 
 class RecipesAdapter : ListAdapter<Result,RecipesAdapter.RecipeViewHolder>(DiffUtilCallback()) {
 
-    class RecipeViewHolder(private val binding: RecipeRowLayoutBinding) :
+    class RecipeViewHolder(private val binding: RowLayoutRecipeBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(result: Result) {
@@ -21,7 +21,7 @@ class RecipesAdapter : ListAdapter<Result,RecipesAdapter.RecipeViewHolder>(DiffU
         companion object{
             fun from(parent: ViewGroup):RecipeViewHolder{
                 val inflater = LayoutInflater.from(parent.context)
-                val binding = RecipeRowLayoutBinding.inflate(inflater,parent,false)
+                val binding = RowLayoutRecipeBinding.inflate(inflater,parent,false)
                 return RecipeViewHolder(binding)
             }
         }

@@ -7,12 +7,12 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.manishjandu.foodify.adapters.FavouriteRecipesAdapter.FavouriteRecipeViewHolder
 import com.manishjandu.foodify.data.database.entities.FavouriteEntity
-import com.manishjandu.foodify.databinding.FavouriteRecipeRowLayoutBinding
+import com.manishjandu.foodify.databinding.RowLayoutFavouriteBinding
 
 
 class FavouriteRecipesAdapter:ListAdapter<FavouriteEntity, FavouriteRecipeViewHolder>(DiffUtilCallback()) {
 
-    class FavouriteRecipeViewHolder(private val binding:FavouriteRecipeRowLayoutBinding):RecyclerView.ViewHolder(binding.root){
+    class FavouriteRecipeViewHolder(private val binding:RowLayoutFavouriteBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(result: FavouriteEntity) {
             binding.favouritesEntity = result
             binding.executePendingBindings()
@@ -21,7 +21,7 @@ class FavouriteRecipesAdapter:ListAdapter<FavouriteEntity, FavouriteRecipeViewHo
         companion object{
             fun from(parent: ViewGroup): FavouriteRecipeViewHolder {
                 val inflater = LayoutInflater.from(parent.context)
-                val binding = FavouriteRecipeRowLayoutBinding.inflate(inflater,parent,false)
+                val binding = RowLayoutFavouriteBinding.inflate(inflater,parent,false)
                 return FavouriteRecipeViewHolder(binding)
             }
         }
