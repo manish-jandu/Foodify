@@ -23,6 +23,7 @@ class FavouriteRecipesAdapter(
     private var multiSelection = false
     private var selectedRecipes = arrayListOf<FavouriteEntity>()
     private var viewHolders = arrayListOf<FavouriteRecipeViewHolder>()
+    private lateinit var mActionMode: ActionMode
 
     class FavouriteRecipeViewHolder(private val binding: RowLayoutFavouriteBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -72,9 +73,9 @@ class FavouriteRecipesAdapter(
             if (!multiSelection) {
                 multiSelection = true
                 requireActivity.startActionMode(this)
-                applySelection(holder,currentRecipe)
+                applySelection(holder, currentRecipe)
                 true
-            }else{
+            } else {
                 multiSelection = false
                 false
             }
@@ -85,9 +86,11 @@ class FavouriteRecipesAdapter(
         if (selectedRecipes.contains(currentRecipe)) {
             selectedRecipes.remove(currentRecipe)
             changeRecipeStyle(holder, R.color.cardBackGroundColor, R.color.strokeColor)
+            applyActionModeTitle()
         } else {
             selectedRecipes.add(currentRecipe)
             changeRecipeStyle(holder, R.color.cardBackGroundLightColor, R.color.colorPrimary)
+            applyActionModeTitle()
         }
     }
 
@@ -105,8 +108,23 @@ class FavouriteRecipesAdapter(
         holder.cardViewRow.strokeColor = ContextCompat.getColor(requireActivity, strokeColor)
     }
 
+    private fun applyActionModeTitle() {
+        when (selectedRecipes.size) {
+            0 -> {
+                mActionMode.finish()
+            }
+            1 -> {
+                mActionMode.title = "${selectedRecipes.size} item selected"
+            }
+            else -> {
+                mActionMode.title = "${selectedRecipes.size} items selected"
+            }
+        }
+    }
+
     override fun onCreateActionMode(actionMode: ActionMode?, menu: Menu?): Boolean {
         actionMode?.menuInflater?.inflate(R.menu.favourite_contextual_menu, menu)
+        mActionMode = actionMode!!
         applyStatusBarColor(R.color.contextualStatusBarColor)
         return true
     }
@@ -120,10 +138,10 @@ class FavouriteRecipesAdapter(
     }
 
     override fun onDestroyActionMode(actionMode: ActionMode?) {
-        viewHolders.forEach { holder->
+        viewHolders.forEach { holder ->
             changeRecipeStyle(holder, R.color.cardBackGroundColor, R.color.strokeColor)
         }
-        multiSelection =false
+        multiSelection = false
         selectedRecipes.clear()
         applyStatusBarColor(R.color.statusBarColor)
     }
