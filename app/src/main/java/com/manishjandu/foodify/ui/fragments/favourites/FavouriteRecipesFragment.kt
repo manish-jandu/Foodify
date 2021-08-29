@@ -24,11 +24,9 @@ class FavouriteRecipesFragment : Fragment(R.layout.fragment_favourite_recipes) {
 
         setupRecyclerView()
 
-        mainViewModel.readFavouriteRecipes.observe(viewLifecycleOwner){favouritesList ->
-            favouritesList?.let {
-                favouriteRecipesAdapter.submitList(it)
-            }
-        }
+        binding.lifecycleOwner = this
+        binding.mainViewModel = mainViewModel
+        binding.favouriteRecipeAdapter = favouriteRecipesAdapter
 
     }
 
