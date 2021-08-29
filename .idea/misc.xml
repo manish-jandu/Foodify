@@ -8,7 +8,8 @@
         <entry key="..\:/Projects/Android-Projects/Foodify/app/src/main/res/layout/activity_details.xml" value="0.17083333333333334" />
         <entry key="..\:/Projects/Android-Projects/Foodify/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Projects/Android-Projects/Foodify/app/src/main/res/layout/bottom_sheet_recipes.xml" value="0.22" />
-        <entry key="..\:/Projects/Android-Projects/Foodify/app/src/main/res/layout/fragment_favourite_recipes.xml" value="0.17083333333333334" />
+        <entry key="..\:/Projects/Android-Projects/Foodify/app/src/main/res/layout/favourite_recipe_row_layout.xml" value="0.5" />
+        <entry key="..\:/Projects/Android-Projects/Foodify/app/src/main/res/layout/fragment_favourite_recipes.xml" value="0.34273772204806685" />
         <entry key="..\:/Projects/Android-Projects/Foodify/app/src/main/res/layout/fragment_food_joke.xml" value="0.13958333333333334" />
         <entry key="..\:/Projects/Android-Projects/Foodify/app/src/main/res/layout/fragment_ingredients.xml" value="0.17083333333333334" />
         <entry key="..\:/Projects/Android-Projects/Foodify/app/src/main/res/layout/fragment_overview.xml" value="0.75" />
