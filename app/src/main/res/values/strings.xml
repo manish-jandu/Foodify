@@ -44,4 +44,5 @@
     <string name="delete_favourite_menu">Delete Favourite Menu</string>
     <string name="delete_all">Delete All</string>
     <string name="not_a_joke">This is a joke which can be funny for a person but cannot be funny to another person, totally depends on person to person sarcasm.</string>
+    <string name="share">Share</string>
 </resources>
