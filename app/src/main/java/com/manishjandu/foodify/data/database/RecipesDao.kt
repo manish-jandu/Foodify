@@ -2,6 +2,7 @@ package com.manishjandu.foodify.data.database
 
 import androidx.room.*
 import com.manishjandu.foodify.data.database.entities.FavouriteEntity
+import com.manishjandu.foodify.data.database.entities.FoodJokeEntity
 import com.manishjandu.foodify.data.database.entities.RecipesEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -25,4 +26,10 @@ interface RecipesDao {
 
     @Query("DELETE FROM favourite_recipe_table")
     suspend fun deleteAllFavouriteRecipes()
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertFoodJoke(foodJokeEntity: FoodJokeEntity)
+
+    @Query("SELECT * FROM food_joke_table ORDER BY id ASC")
+    fun readFoodJoke():Flow<List<FoodJokeEntity>>
 }
