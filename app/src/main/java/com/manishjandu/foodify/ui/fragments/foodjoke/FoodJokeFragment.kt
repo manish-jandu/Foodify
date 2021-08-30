@@ -85,7 +85,7 @@ class FoodJokeFragment : Fragment(R.layout.fragment_food_joke) {
                 this.putExtra(Intent.EXTRA_TEXT,foodJoke)
                 this.type = "text/plain"
             }
-            startActivity(shareIntent++  )
+            startActivity(shareIntent)
         }
 
         return super.onOptionsItemSelected(item)
