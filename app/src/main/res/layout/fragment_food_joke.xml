@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="mainViewModel"
             type="com.manishjandu.foodify.viewmodels.MainViewModel" />
@@ -17,6 +18,8 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_view_food_joke"
+            readApiResponseFoodJoke="@{mainViewModel.foodJokeResponse}"
+            readDatabaseFoodJoke="@{mainViewModel.readFoodJoke}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -44,7 +47,7 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
                     android:fontFamily="@font/courgette"
-                    android:text="@string/not_a_joke"
+
                     android:textColor="@color/dark"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -60,6 +63,7 @@
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"
+            readApiResponseFoodJoke="@{mainViewModel.foodJokeResponse}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
@@ -75,6 +79,8 @@
             android:alpha="0.5"
             android:src="@drawable/ic_sad"
             android:visibility="invisible"
+            readApiResponseFoodJokeError="@{mainViewModel.foodJokeResponse}"
+            readDatabaseFoodJokeError="@{mainViewModel.readFoodJoke}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -89,6 +95,8 @@
             android:layout_marginTop="12dp"
             android:alpha="0.5"
             android:text="Error"
+            readApiResponseFoodJokeError="@{mainViewModel.foodJokeResponse}"
+            readDatabaseFoodJokeError="@{mainViewModel.readFoodJoke}"
             android:textSize="18sp"
             android:textStyle="bold"
             android:visibility="invisible"

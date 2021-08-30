@@ -34,10 +34,10 @@ class FoodJokeFragment : Fragment(R.layout.fragment_food_joke) {
                     binding.textViewFoodJoke.text = response.data?.text
                 }
                 is NetworkResult.Loading -> {
-                    loadDataFromCache()
                     Log.d("FoodJokeFragment", "network result loading")
                 }
                 is NetworkResult.Error -> {
+                    loadDataFromCache()
                     Toast.makeText(
                         requireContext(),
                         response.message.toString(),
