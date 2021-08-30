@@ -12,5 +12,5 @@ data class FoodJokeEntity(
     var foodJoke:FoodJoke
     ){
     @PrimaryKey(autoGenerate = false)
-    val id:Int = 0
+    var id:Int = 0
 }
