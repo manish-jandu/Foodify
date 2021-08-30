@@ -11,6 +11,12 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="SplashScreenStyle" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
     <style name="CustomChipStyle" parent="Widget.MaterialComponents.Chip.Filter">
         <item name="chipBackgroundColor">@color/chip_background_color</item>
         <item name="android:textColor">@color/chipTextColor</item>
@@ -32,6 +38,7 @@
         <item name="tabIndicatorHeight">2dp</item>
         <item name="tabSelectedTextColor">@color/white</item>
     </style>
+
     <style name="customTabTextColor" parent="TextAppearance.Design.Tab">
         <item name="android:textColor">@color/white</item>
     </style>
