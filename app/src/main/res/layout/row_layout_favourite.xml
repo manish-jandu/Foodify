@@ -65,12 +65,12 @@
 
                 <TextView
                     android:id="@+id/text_view_description"
+                    parseHtml="@{favouritesEntity.result.summary}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:ellipsize="end"
                     android:maxLines="3"
-                    parseHtml="@{favouritesEntity.result.summary}"
                     android:textColor="@color/descriptionColor"
                     app:layout_constraintEnd_toEndOf="@+id/text_view_title"
                     app:layout_constraintStart_toStartOf="@+id/text_view_title"
@@ -91,10 +91,9 @@
 
                 <TextView
                     android:id="@+id/text_view_heart"
-                    setNumberOfLikes="@{favouritesEntity.result.aggregateLikes}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="100"
+                    android:text="@{String.valueOf(favouritesEntity.result.aggregateLikes)}"
                     android:textAlignment="center"
                     android:textColor="@color/red"
                     app:layout_constraintStart_toStartOf="@+id/text_view_description"
@@ -112,11 +111,10 @@
 
                 <TextView
                     android:id="@+id/text_view_time"
-                    setNumberOfMinutes="@{favouritesEntity.result.readyInMinutes}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
-                    android:text="100"
+                    android:text="@{String.valueOf(favouritesEntity.result.readyInMinutes)}"
                     android:textAlignment="center"
                     android:textColor="@color/yellow"
                     app:layout_constraintStart_toEndOf="@+id/text_view_heart"

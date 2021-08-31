@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="result"
             type="com.manishjandu.foodify.models.Result" />
@@ -11,8 +12,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/recipe_row_layout"
-        android:layout_width="match_parent"
         onRecipeClickListener="@{result}"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="4dp">
 
@@ -36,10 +37,10 @@
 
                 <ImageView
                     android:id="@+id/image_view_recipe"
+                    loadImageFromUrl="@{result.image}"
                     android:layout_width="200dp"
                     android:layout_height="0dp"
                     android:scaleType="centerCrop"
-                    loadImageFromUrl="@{result.image}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -65,12 +66,12 @@
 
                 <TextView
                     android:id="@+id/text_view_description"
+                    parseHtml="@{result.summary}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:ellipsize="end"
                     android:maxLines="3"
-                    parseHtml="@{result.summary}"
                     android:textColor="@color/descriptionColor"
                     app:layout_constraintEnd_toEndOf="@+id/text_view_title"
                     app:layout_constraintStart_toStartOf="@+id/text_view_title"
@@ -91,10 +92,9 @@
 
                 <TextView
                     android:id="@+id/text_view_heart"
-                    setNumberOfLikes="@{result.aggregateLikes}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="100"
+                    android:text="@{String.valueOf(result.aggregateLikes)}"
                     android:textAlignment="center"
                     android:textColor="@color/red"
                     app:layout_constraintStart_toStartOf="@+id/text_view_description"
@@ -112,11 +112,10 @@
 
                 <TextView
                     android:id="@+id/text_view_time"
-                    setNumberOfMinutes="@{result.readyInMinutes}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
-                    android:text="100"
+                    android:text="@{String.valueOf(result.readyInMinutes)}"
                     android:textAlignment="center"
                     android:textColor="@color/yellow"
                     app:layout_constraintStart_toEndOf="@+id/text_view_heart"

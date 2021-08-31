@@ -20,8 +20,6 @@ class RecipesRowBinding {
 
         @BindingAdapter("onRecipeClickListener")
         @JvmStatic
-
-
         fun onRecipeClickListener(recipeRowLayout: ConstraintLayout, result: Result) {
             recipeRowLayout.setOnClickListener {
                 try {
@@ -41,18 +39,6 @@ class RecipesRowBinding {
                 crossfade(600)
                 error(R.drawable.ic_error_placeholder)
             }
-        }
-
-        @BindingAdapter("setNumberOfLikes")
-        @JvmStatic
-        fun setNumberOfLikes(textView: TextView, likes: Int) {
-            textView.text = likes.toString()
-        }
-
-        @BindingAdapter("setNumberOfMinutes")
-        @JvmStatic
-        fun setNumberOfMinutes(textView: TextView, numberOfMinutes: Int) {
-            textView.text = numberOfMinutes.toString()
         }
 
         @BindingAdapter("applyVeganColor")
