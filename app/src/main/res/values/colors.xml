@@ -34,9 +34,9 @@
     <color name="descriptionColor">@color/darkGray</color>
 
     //Status Bar
-    <color name="statusBarColor">@color/colorPrimaryDark</color>
+    <color name="statusBarColor">@color/black</color>
     <color name="contextualStatusBarColor">@color/darker</color>
-    <color name="contextualActionBarColor">@color/darker</color>
+    <color name="contextualActionBarColor">@color/dark</color>
     <color name="actionBarBackgroundColor">@color/colorPrimary</color>
 
     //Custom bottom navigation
