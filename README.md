@@ -61,3 +61,19 @@ It is based on MVVM and repository Pattern with the use all modern libraies.
   or set it up in utils/Constants as API_KEY = "****************"
 * Build the project and run on an android device or emulator
 
+## Demo
+ - video - [youtube](https://www.youtube.com/watch?v=qS0O6quJRTQ)
+ - Drive - [Apk](https://drive.google.com/drive/folders/18BaoM2eH99Tu3WJp6uaiYGaB7loVeLX7?usp=sharing)
+  
+## Screen 
+
+ <div >
+  <img src="Demo/1.jpg" width="200" height="400"/>
+  <img src="Demo/2.jpg" width="200" height="400"/> 
+  <img src="Demo/3.jpg" width="200" height="400"/>
+  <img src="Demo/4.jpg" width="200" height="400"/> 
+  <img src="Demo/5.jpg" width="200" height="400"/>
+  <img src="Demo/6.jpg" width="200" height="400"/>
+  <img src="Demo/7.jpg" width="200" height="400"/>
+ </div>
+
